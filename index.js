@@ -1,3 +1,1 @@
-var vanillaCollapsibleContent = require('./lib/vanilla-collapsible-content');
-
-module.exports = vanillaCollapsibleContent;
+module.exports = require('./lib/vanilla-collapsible-content');

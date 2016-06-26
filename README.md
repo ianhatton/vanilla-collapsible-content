@@ -1,2 +1,1 @@
-# collapsible_content_vanilla
-
+# vanilla-collapsible-content
