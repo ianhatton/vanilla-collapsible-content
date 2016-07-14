@@ -1,6 +1,6 @@
 {
   "name": "@ianhatton/vanilla-collapsible-content",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Ian Hatton",
   "description": "Collapsible content module written in vanilla JavaScript",
   "keywords": [
