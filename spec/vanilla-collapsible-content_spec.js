@@ -86,19 +86,19 @@ describe('collapsible content module', function(){
       collapsibleContent._init();
     });
 
-    it('should assign an empty array to this.bodies', ()=>{
+    it('should set this.bodies to be an empty array', ()=>{
       expect(collapsibleContent.bodies.length).toEqual(0);
     });
 
-    it('should assign an empty array to this.items', ()=>{
+    it('should set this.items to be an empty array', ()=>{
       expect(collapsibleContent.items.length).toEqual(0);
     });
 
-    it('should assign an empty array to this.toggles', ()=>{
+    it('should set this.toggles to be an empty array', ()=>{
       expect(collapsibleContent.toggles.length).toEqual(0);
     });
 
-    it('should assign the "data-name" attribute of the element to this.dataName', ()=>{
+    it('should set this.dataName to be the "data-name" attribute of the element', ()=>{
       expect(collapsibleContent.dataName).toEqual(this.dataName);
     });
 
@@ -116,11 +116,11 @@ describe('collapsible content module', function(){
       collapsibleContent._initViewport();
     });
 
-    it('should set this.device to the viewport.getDevice function', ()=>{
+    it('should set this.device to be a call to the viewport.getDevice function', ()=>{
       expect(collapsibleContent.device).toEqual('massive swanky monitor');
     });
 
-    it('should set this.size to the viewport.windowSize function', ()=>{
+    it('should set this.size to be a call to the viewport.windowSize function', ()=>{
       expect(collapsibleContent.size).toEqual('99999px');
     });
 
@@ -873,7 +873,7 @@ describe('collapsible content module', function(){
         collapsibleContent._trackSize(device, size);
       });
 
-      it('should assign the value of device to this.device', ()=>{
+      it('should set this.device to be the value of the device parameter', ()=>{
         expect(collapsibleContent.device).toEqual('mobile');
       });
 
