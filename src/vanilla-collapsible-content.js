@@ -107,7 +107,7 @@ class VanillaCollapsibleContentClass{
 
   _setBodyIDs(){
     _.forEach(this.bodies, function(body, i){
-      body.id += (_.isNull(this.dataName)) ? ' collapsible-' + i : ' ' + this.dataName + '-collapsible-' + i;
+      body.id += (_.isNull(this.dataName)) ? 'collapsible-' + i : '' + this.dataName + '-collapsible-' + i;
     }.bind(this));
   }
 
