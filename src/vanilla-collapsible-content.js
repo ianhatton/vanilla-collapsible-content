@@ -56,7 +56,7 @@ class VanillaCollapsibleContentClass{
       /* eslint-enable */
     }.bind(this));
 
-    this._setBodyClasses();
+    this._setBodyIDs();
   }
 
   _getItems(){
@@ -105,9 +105,9 @@ class VanillaCollapsibleContentClass{
     }
   }
 
-  _setBodyClasses(){
+  _setBodyIDs(){
     _.forEach(this.bodies, function(body, i){
-      body.className += (_.isNull(this.dataName)) ? ' collapsible-' + i : ' ' + this.dataName + '-collapsible-' + i;
+      body.id += (_.isNull(this.dataName)) ? ' collapsible-' + i : ' ' + this.dataName + '-collapsible-' + i;
     }.bind(this));
   }
 

@@ -164,7 +164,7 @@ describe('collapsible content module', function(){
     beforeEach(()=>{
       collapsibleContent.items = collapsibleContent.config.element.querySelectorAll('.' + collapsibleContent.config.itemContainerClass);
 
-      spyOn(collapsibleContent, '_setBodyClasses');
+      spyOn(collapsibleContent, '_setBodyIDs');
 
       collapsibleContent._getBodies();
     });
@@ -173,8 +173,8 @@ describe('collapsible content module', function(){
       expect(collapsibleContent.items.length).toEqual(2);
     });
 
-    it('should call the _setBodyClasses function', ()=>{
-      expect(collapsibleContent._setBodyClasses).toHaveBeenCalled();
+    it('should call the _setBodyIDs function', ()=>{
+      expect(collapsibleContent._setBodyIDs).toHaveBeenCalled();
     });
   });
 
@@ -327,8 +327,8 @@ describe('collapsible content module', function(){
     });
   });
 
-  describe('_setBodyClasses function', ()=>{
-    let body, className;
+  describe('_setBodyIDs function', ()=>{
+    let body, id;
 
     beforeEach(()=>{
       collapsibleContent.items = collapsibleContent.config.element.querySelectorAll('.' + collapsibleContent.config.itemContainerClass);
@@ -344,13 +344,13 @@ describe('collapsible content module', function(){
       beforeEach(()=>{
         collapsibleContent.dataName = this.dataName;
 
-        collapsibleContent._setBodyClasses();
+        collapsibleContent._setBodyIDs();
 
-        className = body.className;
+        id = body.id;
       });
 
-      it("should append the value of this.dataName to the class on the item's body", ()=>{
-        expect(className).toContain(this.dataName);
+      it("should append the value of this.dataName to the id on the item's body", ()=>{
+        expect(id).toContain(this.dataName);
       });
     });
 
@@ -358,13 +358,13 @@ describe('collapsible content module', function(){
       beforeEach(()=>{
         collapsibleContent.dataName = null;
 
-        collapsibleContent._setBodyClasses();
+        collapsibleContent._setBodyIDs();
 
-        className = body.className;
+        id = body.id;
       });
 
-      it("should not append the value of this.dataName to the class on the item's body", ()=>{
-        expect(className).not.toContain(this.dataName);
+      it("should not append the value of this.dataName to the id on the item's body", ()=>{
+        expect(id).not.toContain(this.dataName);
       });
     });
   });
