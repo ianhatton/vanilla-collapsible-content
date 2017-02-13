@@ -54,6 +54,7 @@
     "karma-safari-launcher": "^1.0.0",
     "karma-story-reporter": "^0.3.1",
     "lodash": "^4.17.4",
+    "phantomjs-polyfill-array-from": "^1.0.1",
     "phantomjs-prebuilt": "^2.1.14",
     "rewireify": "^0.2.5",
     "viewport-detection-es6": "~2.1.*",

@@ -162,7 +162,7 @@ describe('collapsible content module', function(){
 
   describe('_getBodies function', ()=>{
     beforeEach(()=>{
-      collapsibleContent.items = collapsibleContent.config.element.querySelectorAll('.' + collapsibleContent.config.itemContainerClass);
+      collapsibleContent.items = Array.from(collapsibleContent.config.element.querySelectorAll('.' + collapsibleContent.config.itemContainerClass));
 
       spyOn(collapsibleContent, '_setBodyIDs');
 
@@ -216,7 +216,7 @@ describe('collapsible content module', function(){
 
   describe('_getToggles function', ()=>{
     beforeEach(()=>{
-      collapsibleContent.items = collapsibleContent.config.element.querySelectorAll('.' + collapsibleContent.config.itemContainerClass);
+      collapsibleContent.items = Array.from(collapsibleContent.config.element.querySelectorAll('.' + collapsibleContent.config.itemContainerClass));
 
       spyOn(collapsibleContent, '_setToggleAriaControls');
       spyOn(collapsibleContent, '_addToggleClickListeners');

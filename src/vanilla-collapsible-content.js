@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const _ = require('lodash/core')
     , ViewportDetectionClass = require('viewport-detection-es6');
 
@@ -42,46 +43,38 @@ class VanillaCollapsibleContentClass{
   }
 
   _addToggleClickListeners(){
-    _.forEach(this.toggles, function(toggle){
+    this.toggles.forEach((toggle)=>{
       toggle.addEventListener('click'
                              , this._toggleClick.bind(this, toggle)
                              , false);
-    }.bind(this));
+    });
   }
 
   _getBodies(){
-    _.forEach(this.items, function(item){
-      /* eslint-disable max-len */
-      this.bodies.push(item.querySelector('.' + this.config.bodyContainerClass));
-      /* eslint-enable */
-    }.bind(this));
+    this.bodies = this.items.map((item)=>{
+      return item.querySelector(`.${this.config.bodyContainerClass}`);
+    });
 
     this._setBodyIDs();
   }
 
   _getItems(){
     let dataParent;
-    /* eslint-disable max-len */
-    let items = this.config.element.querySelectorAll('.' + this.config.itemContainerClass);
-      /* eslint-enable */
+    const items = this.config.element.querySelectorAll(`.${this.config.itemContainerClass}`);
 
-    _.forEach(items, function(item){
+    this.items = Array.from(items).filter((item)=>{
       dataParent = item.getAttribute('data-parent');
 
-      if (dataParent === this.dataName){
-        this.items.push(item);
-      }
-    }.bind(this));
+      return dataParent === this.dataName;
+    });
 
     this._setVisibleItems();
   }
 
   _getToggles(){
-    _.forEach(this.items, function(item){
-      /* eslint-disable max-len */
-      this.toggles.push(item.querySelector('.' + this.config.toggleContainerClass));
-      /* eslint-disable enable */
-    }.bind(this));
+    this.toggles = this.items.map((item)=>{
+      return item.querySelector(`.${this.config.toggleContainerClass}`);
+    });
 
     this._setToggleAriaControls();
     this._addToggleClickListeners();
@@ -106,9 +99,9 @@ class VanillaCollapsibleContentClass{
   }
 
   _setBodyIDs(){
-    _.forEach(this.bodies, function(body, i){
-      body.id += (_.isNull(this.dataName)) ? `collapsible-${i}` : `${this.dataName}-collapsible-${i}`;
-    }.bind(this));
+    this.bodies.forEach((body, i)=>{
+      body.id += _.isNull(this.dataName) ? `collapsible-${i}` : `${this.dataName}-collapsible-${i}`;
+    });
   }
 
   _setBreakpointDefaults(){
@@ -128,14 +121,16 @@ class VanillaCollapsibleContentClass{
   }
 
   _setDefaultBodyAriaHiddens(visible){
-    _.forEach(this.bodies, function(body){
+    this.bodies.forEach((body)=>{
       body.setAttribute('aria-hidden', (visible === 'true') ? 'false' : 'true');
     });
   }
 
   _setDefaultBodyClasses(visible){
-    _.forEach(this.bodies, function(body){
-      let className = body.className;
+    let className;
+
+    this.bodies.forEach((body)=>{
+      className = body.className;
 
       if (visible === 'true'){
         if (!_.includes(className, 'open')){
@@ -155,14 +150,16 @@ class VanillaCollapsibleContentClass{
   }
 
   _setDefaultToggleAriaExpandeds(visible){
-    _.forEach(this.toggles, function(toggle){
+    this.toggles.forEach((toggle)=>{
       toggle.setAttribute('aria-expanded', (visible === 'true') ? 'true' : 'false');
     });
   }
 
   _setDefaultToggleClasses(visible){
-    _.forEach(this.toggles, function(toggle){
-      let className = toggle.className;
+    let className;
+
+    this.toggles.forEach((toggle)=>{
+      className = toggle.className;
 
       if (visible === 'true'){
         if (!_.includes(className, 'open')){
@@ -175,9 +172,9 @@ class VanillaCollapsibleContentClass{
   }
 
   _setToggleAriaControls(){
-    _.forEach(this.toggles, function(toggle, i){
-      toggle.setAttribute('aria-controls', (_.isNull(this.dataName)) ? 'collapsible-' + i : this.dataName + '-collapsible-' + i);
-    }.bind(this));
+    this.toggles.forEach((toggle, i)=>{
+      toggle.setAttribute('aria-controls', _.isNull(this.dataName) ? `collapsible-${i}` : `${this.dataName}-collapsible-${i}`);
+    });
   }
 
   _setToggleAriaExpanded(toggle){
@@ -197,9 +194,9 @@ class VanillaCollapsibleContentClass{
   }
 
   _setVisibleItems(){
-    let visibleMobile = this.config.element.getAttribute('data-visible-mobile');
-    let visibleTablet = this.config.element.getAttribute('data-visible-tablet');
-    let visibleDesktop = this.config.element.getAttribute('data-visible-desktop');
+    const visibleMobile = this.config.element.getAttribute('data-visible-mobile');
+    const visibleTablet = this.config.element.getAttribute('data-visible-tablet');
+    const visibleDesktop = this.config.element.getAttribute('data-visible-desktop');
 
     this.visibleMobile = (_.isNull(visibleMobile)) ? 'false' : visibleMobile;
     this.visibleTablet = (_.isNull(visibleTablet)) ? 'false' : visibleTablet;
@@ -237,3 +234,5 @@ class VanillaCollapsibleContentClass{
 }
 
 module.exports = VanillaCollapsibleContentClass;
+/* eslint-enable */
+
